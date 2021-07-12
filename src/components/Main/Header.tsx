@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import { FaTachometerAlt as DashboardIcon } from 'react-icons/fa'
 
 function Header() {
    return (<Navbar bg="primary" variant={"dark"} expand="md">
@@ -9,8 +10,10 @@ function Header() {
          <Navbar.Toggle aria-controls="basic-navbar-nav" />
          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className={"ml-auto"}>
-               <Nav.Link as={NavLink} to="/" activeClassName={"active"}>Home</Nav.Link>
-               <Nav.Link as={NavLink} to="/dashboard" activeClassName={"active"}>Dashboard</Nav.Link>
+               <hr className={"bg-white w-100 d-md-none"} />
+               <Nav.Link as={NavLink} to="/dashboard" activeClassName={"active"}>
+                  <DashboardIcon size={32} />
+               </Nav.Link>
             </Nav>
          </Navbar.Collapse>
       </Container>
