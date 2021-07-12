@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import routes from './routes/web.routes'
+import Loader from './components/Loader'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <React.Suspense fallback={<Loader />}>
+        <Switch>
+          {
+            routes.map(({ path, exact, Component }, index) => (
+              <Route
+                key={index}
+                path={path}
+                exact={exact}
+              >
+                <Component />
+              </Route>
+            ))
+          }
+        </Switch>
+      </React.Suspense>
+    </Router>
   );
 }
 
